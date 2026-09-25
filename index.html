@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BB Hatfield Suzuki — Service Quote</title>
+<title>Suzuki - Service Quote</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -192,7 +192,7 @@ body{font-family:'Barlow',sans-serif;background:var(--surface);color:var(--ink);
   <div class="header-brand">
     <div class="header-logo">S</div>
     <div>
-      <div class="header-title">BB Hatfield Suzuki</div>
+      <div class="header-title">Suzuki</div>
       <div class="header-sub">Service Quote Generator</div>
     </div>
   </div>
@@ -762,8 +762,8 @@ function printQuote() {
   var odoStr = cu.odo && cu.odo !== '—' ? Number(cu.odo).toLocaleString() + ' km' : '—';
   var dateStr = new Date().toLocaleDateString('en-ZA', {day:'2-digit',month:'long',year:'numeric'});
   document.getElementById('print-area').innerHTML =
-    '<div class="pq-header"><div class="pq-logo-block"><div class="pq-dealer">BB HATFIELD SUZUKI</div><div class="pq-dealer-sub">Authorised Suzuki Dealer</div></div>'
-    + '<div class="pq-address">223 Duncan Street, Hatfield, Pretoria<br>Tel: (012) 342 6960 | www.bbhatfieldsuzuki.co.za<br>VAT No: 4430262974 | FSP: 49995</div></div>'
+    '<div class="pq-header"><div class="pq-logo-block"><div class="pq-dealer">SUZUKI</div><div class="pq-dealer-sub">Authorised Suzuki Dealer</div></div>'
+    + '<div class="pq-address"></div></div>'
     + '<div class="pq-title">SERVICE ESTIMATE</div>'
     + '<div class="pq-info-row">'
     + '<div class="pq-field"><label>Customer</label><span>' + cu.name + '</span></div>'
@@ -808,7 +808,7 @@ function shareWhatsApp() {
   var partsLines = state.partsRows.filter(function(r) { return r.lineTotal !== null; })
     .map(function(r) { return '  • ' + r.desc + ' (x' + (r.qty%1===0?r.qty:r.qty.toFixed(1)) + '): R ' + fmt(r.lineTotal); }).join('\n');
   var extrasLines = state.extrasSelected.map(function(e) { return '  • ' + e.key + ': R ' + fmt(e.hrs*labRate); }).join('\n');
-  var lines = ['*BB Hatfield Suzuki — Service Estimate*','─────────────────────────────',
+  var lines = ['*Suzuki - Service Estimate*','─────────────────────────────',
     '*Customer:* ' + cu.name, '*Vehicle:* ' + state.lookup, '*Reg:* ' + cu.reg,
     '*Service:* #' + state.svcNum + ' (' + formatKm(km) + 'km)', '', '*Parts:*',
     partsLines || '  (prices not loaded — upload Evolve file)'];
@@ -819,7 +819,7 @@ function shareWhatsApp() {
   if (t.totalDiscount > 0) lines.push('Discount: -R ' + fmt(t.totalDiscount));
   lines = lines.concat(['*Total Excl VAT: R ' + fmt(t.totalExcl||0) + '*',
     'VAT (15%): R ' + fmt(t.vat||0), '*TOTAL INCL VAT: R ' + fmt(t.totalIncl||0) + '*',
-    '', '_Valid 12 days. Subject to final inspection._', '_BB Hatfield Suzuki | (012) 342 6960_']);
+    '', '_Valid 12 days. Subject to final inspection._', '_Suzuki_']);
   var number = cu.contact.replace(/\D/g, '');
   var encoded = encodeURIComponent(lines.join('\n'));
   var url = number ? 'https://wa.me/27' + number.replace(/^0/,'') + '?text=' + encoded : 'https://wa.me/?text=' + encoded;
